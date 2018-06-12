@@ -24,17 +24,14 @@ class Theme
     /**
      * @var string
      *
-     * @ORM\Column(name="question", type="string", length=255, unique=true)
+     * @ORM\Column(name="libelle", type="string", length=255)
      */
-    private $question;
+    private $libelle;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="reponse", type="string", length=255, unique=true)
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Quiz", mappedBy="theme", cascade={"persist"})
      */
-    private $reponse;
-
+    protected $quizList;
 
     /**
      * Get id
@@ -47,51 +44,27 @@ class Theme
     }
 
     /**
-     * Set question
+     * Set libelle
      *
-     * @param string $question
+     * @param string $libelle
      *
-     * @return Theme
+     * @return Quiz
      */
-    public function setQuestion($question)
+    public function setLibelle($libelle)
     {
-        $this->question = $question;
+        $this->libelle = $libelle;
 
         return $this;
     }
 
     /**
-     * Get question
+     * Get libelle
      *
      * @return string
      */
-    public function getQuestion()
+    public function getLibelle()
     {
-        return $this->question;
-    }
-
-    /**
-     * Set reponse
-     *
-     * @param string $reponse
-     *
-     * @return Theme
-     */
-    public function setReponse($reponse)
-    {
-        $this->reponse = $reponse;
-
-        return $this;
-    }
-
-    /**
-     * Get reponse
-     *
-     * @return string
-     */
-    public function getReponse()
-    {
-        return $this->reponse;
+        return $this->libelle;
     }
 }
 
